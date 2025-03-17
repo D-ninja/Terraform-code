@@ -30,6 +30,6 @@ resource "aws_instance" "web" {
   instance_type = "t2.micro"
 
   tags = {
-    Name = "terraform-atlantis023"
+    Name = "terraform-atlantis0231"
   }
 }
