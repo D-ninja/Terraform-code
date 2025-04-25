@@ -14,5 +14,6 @@ resource "aws_instance" "my_ec2" {
   instance_type = "t2.micro"
   tags = {
     Name = "My_ec2ter"
+    env = "dev"
   }
 }
