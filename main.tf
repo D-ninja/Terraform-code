@@ -9,11 +9,28 @@ terraform {
     profile = "default"
   }
 }
-resource "aws_instance" "my_ec2" {
-  ami="ami-0ac4dfaf1c5c0cce9"
-  instance_type = "t2.micro"
-  tags = {
-    Name = "My_ec2ter"
-    env = "dev"
+
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
   }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"]
 }
+
+/*resource "aws_instance" "web" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "terraform-atlantis0231"
+  }
+}*/
